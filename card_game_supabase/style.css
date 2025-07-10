@@ -1,0 +1,162 @@
+body {
+  font-family: 'Baloo 2', 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+  min-height: 100vh;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+h1 {
+  margin-top: 32px;
+  color: #4a148c;
+  letter-spacing: 2px;
+  font-size: 2.5rem;
+  text-shadow: 0 2px 8px #fff8, 0 1px 0 #fff;
+}
+#scoreboard {
+  margin: 20px auto 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background: #fff6;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px #0001;
+  padding: 10px 24px;
+  font-size: 1.2rem;
+}
+#tries {
+  color: #1976d2;
+  font-weight: bold;
+}
+#reset {
+  background: linear-gradient(90deg, #ffd600 0%, #ff6f00 100%);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 8px 20px;
+  font-size: 1rem;
+  font-family: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #0002;
+  transition: background 0.2s, transform 0.1s;
+}
+#reset:hover {
+  background: linear-gradient(90deg, #ffb300 0%, #ff3d00 100%);
+  transform: scale(1.07);
+}
+#game-board {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(70px, 1fr));
+  grid-gap: 18px;
+  justify-content: center;
+  margin: 32px auto 0 auto;
+  max-width: 380px;
+  perspective: 900px;
+}
+.card {
+  width: 80px;
+  height: 110px;
+  background: none;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px #0002, 0 1.5px 0 #fff8;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  perspective: 900px;
+  transform-style: preserve-3d;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.card:active {
+  box-shadow: 0 2px 8px #0003;
+  transform: scale(0.97);
+}
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0; left: 0;
+  transition: transform 0.6s cubic-bezier(.4,2,.6,1);
+  transform-style: preserve-3d;
+  transform: rotateY(0deg);
+}
+.card.flipped .card-inner, .card.matched .card-inner {
+  transform: rotateY(180deg);
+}
+.card-front, .card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0; left: 0;
+  backface-visibility: hidden;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  font-weight: bold;
+}
+.card-front {
+  background: linear-gradient(135deg, #fff 60%, #e1bee7 100%);
+  color: #4a148c;
+  box-shadow: 0 2px 8px #b39ddb44;
+  border: 2px solid #ce93d8;
+  transform: rotateY(180deg);
+}
+.card-back {
+  background: repeating-linear-gradient(135deg, #1976d2 0 10px, #64b5f6 10px 20px);
+  color: #fff;
+  box-shadow: 0 2px 8px #1976d244;
+  border: 2px solid #1976d2;
+  font-size: 2.5rem;
+  /* 기본 상태에서 보이는 면 */
+  transform: rotateY(0deg);
+}
+.card.matched .card-front {
+  background: linear-gradient(135deg, #ffd600 60%, #fffde7 100%);
+  color: #ff6f00;
+  border: 2px solid #ffd600;
+  box-shadow: 0 0 0 4px #fffde7cc;
+}
+#result {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: #d32f2f;
+  min-height: 24px;
+  font-weight: bold;
+  text-shadow: 0 1px 0 #fff8;
+}
+#leaderboard {
+  margin: 32px auto 0 auto;
+  background: #fff8;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px #0001;
+  padding: 18px 24px 10px 24px;
+  max-width: 340px;
+  font-size: 1.1rem;
+}
+#leaderboard ol {
+  padding-left: 18px;
+}
+@media (max-width: 600px) {
+  #game-board {
+    grid-template-columns: repeat(4, minmax(50px, 1fr));
+    max-width: 220px;
+    grid-gap: 10px;
+  }
+  .card {
+    width: 50px;
+    height: 70px;
+  }
+  #leaderboard {
+    font-size: 0.95rem;
+    padding: 10px 6px 6px 6px;
+  }
+  h1 {
+    font-size: 1.3rem;
+  }
+} 
