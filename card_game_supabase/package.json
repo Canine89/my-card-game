@@ -1,0 +1,7 @@
+{
+  "name": "card_game_supabase",
+  "version": "1.0.0",
+  "scripts": {
+    "vercel-build": "node generate-supabase-config.js"
+  }
+} 
