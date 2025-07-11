@@ -11,8 +11,8 @@ let matched = [];
 let tries = 0;
 
 // Supabase 클라이언트 초기화
-const SUPABASE_URL = 'https://twavtxwwapshjvwwhgst.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR3YXZ0eHd3YXBzaGp2d3doZ3N0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTIxNTU5NDEsImV4cCI6MjA2NzczMTk0MX0.xEid7zNNTNTwitlkNiJRkeWdeU-ogQPsA1hliV3E2dM';
+const SUPABASE_URL = window.SUPABASE_URL;
+const SUPABASE_ANON_KEY = window.SUPABASE_ANON_KEY;
 const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 let userId = localStorage.getItem('card_flip_user_id');
